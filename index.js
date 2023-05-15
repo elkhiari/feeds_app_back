@@ -1,6 +1,7 @@
 const express = require('express');
 const {connectToDb} = require('./db/db.config');
 const router_Auth = require('./routes/users/auth.route');
+const router_user = require('./routes/users/user.route');
 require('dotenv').config();
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 
 // routes
 app.use('/',router_Auth)
+app.use('/',router_user)
 
 
 // connect to db and server
