@@ -5,7 +5,8 @@ const usersModel = require("../../models/users.model");
 const get_me = async(req,res) => {
     try {
         const posts = await postsModel.find({ user: req.user._id });
-        return res.status(200).json({user: {user:req.user,posts}})
+        const data = {...req.user._doc,posts};
+        return res.status(200).json({user: data });
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error' });
     }
