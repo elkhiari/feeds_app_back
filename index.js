@@ -22,7 +22,7 @@ app.use(cors());
 // routes
 app.use('/',router_Auth)
 app.use('/',router_user)
-app.use('/',router_post)
+app.use('/posts',router_post)
 
 // connect to db and server
 const startingServer = (URI,PORT)=>{

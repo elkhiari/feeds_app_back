@@ -23,7 +23,7 @@ const login = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(401).json({ message: 'password incorrect' });
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '48h' });
-        return res.status(200).json({ message: 'logged in successfully', token });
+        return res.status(200).json({ message: 'logged is successfully', token });
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error' });
     }

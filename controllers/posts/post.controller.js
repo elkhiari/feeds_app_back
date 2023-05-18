@@ -42,6 +42,16 @@ const get_all_posts_by_user = async (req,res) => {
     }
 };
 
+const get_all_posts = async (req,res) => {
+  try {
+    const posts = await postsModel.find({}).populate('user',{password:0}).sort({ dateCreated: -1 });
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 const delete_post = async (req, res) => {
     try {
       const postId = req.params.id;
@@ -60,5 +70,5 @@ const delete_post = async (req, res) => {
   };
 
 module.exports = {
-  add_post, get_all_posts_by_user, delete_post, get_post
+  add_post, get_all_posts_by_user, delete_post, get_post ,get_all_posts
 };
